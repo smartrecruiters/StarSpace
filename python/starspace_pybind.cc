@@ -76,7 +76,7 @@ PYBIND11_MODULE(starwrap, m) {
 		.def(py::init<std::shared_ptr<starspace::Args>>())
 		.def("init", &starspace::StarSpace::init)
 		.def("initFromTsv", &starspace::StarSpace::initFromTsv)
-		.def("initFromSavedModel", &starspace::StarSpace::initFromSavedModel)
+		.def("initFromSavedModel", &starspace::StarSpace::initFromSavedModel, py::call_guard<py::gil_scoped_release>())
 
 		.def("train", &starspace::StarSpace::train)
 		.def("evaluate", &starspace::StarSpace::evaluate)
