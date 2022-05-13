@@ -33,3 +33,4 @@
 *.tmp
 python/build
 python/test/tmp
+python/test/__pycache__
