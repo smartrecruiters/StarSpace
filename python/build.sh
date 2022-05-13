@@ -63,7 +63,6 @@ if [ -z "$VIRTUAL_ENV" ]; then
 fi
 
 pip install -r requirements.txt
-python test.py
-python test_predictTags.py
+python -m pytest -vv
 
 cd -
