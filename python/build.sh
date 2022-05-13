@@ -1,13 +1,27 @@
+#!/bin/bash
+
+# Configuration
+
+# Boost lib location
+BOOST_DIR=/usr/local/Cellar/boost/1.78.0_1
+
+# GoogleTest lib location (optional)
+GTEST_DIR=/usr/local/Cellar/googletest/1.11.0
+
+
+
 echo "############################# initial cleanup ############################# "
 # cleanup wrapper
 rm -r build
 rm -r lib
+rm -r test/*.so
+rm -r test/tmp
 
 echo "#############################  build starspace ############################# "
 # build starspace lib
 cd ..
 make clean
-make -f makefile_py
+make -f makefile_py BOOST_DIR=$BOOST_DIR GTEST_DIR=$GTEST_DIR
 cd -
 
 echo "#############################  build wrapper ############################# "
@@ -17,7 +31,7 @@ cp ../libstarspace.a ./lib
 mkdir build
 cd build
 conan install ..
-cmake .. -DCMAKE_BUILD_TYPE=Release
+cmake .. -DCMAKE_BUILD_TYPE=Release -DBOOST_DIR=$BOOST_DIR -DPYTHON_LIBRARY=$VIRTUAL_ENV/lib/
 cmake --build .
 cd -
 
