@@ -1,17 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# Configuration
+source starspace.cfg
 
-# Boost lib location
-BOOST_DIR=/usr/local/Cellar/boost/1.78.0_1
-
-# GoogleTest lib location (optional)
-GTEST_DIR=/usr/local/Cellar/googletest/1.11.0
-
-# Name of python virtualenvironment to perform result testing
-VENV_NAME=build-starwrap
-
-
+echo Building starspace python wrapper with following configuration:
+echo BOOST_DIR=$BOOST_DIR
+echo GTEST_DIR=$GTEST_DIR
+echo VENV_NAME=$VENV_NAME
+echo Python: $(python --version)
 
 echo "############################# initial cleanup ############################# "
 # cleanup wrapper
