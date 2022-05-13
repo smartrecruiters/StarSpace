@@ -25,7 +25,7 @@ endif()
 string(TOUPPER "${CMAKE_BUILD_TYPE}" U_CMAKE_BUILD_TYPE)
 
 # Try to autodetect Python (can be overridden manually if needed)
-set(Python_ADDITIONAL_VERSIONS 3.4 3.5 3.6 3.7)
+set(Python_ADDITIONAL_VERSIONS 3.4 3.5 3.6 3.7 3.8 3.9 3.10)
 if (NOT ${EXAMPLE_PYTHON_VERSION} STREQUAL "")
   find_package(PythonLibs ${EXAMPLE_PYTHON_VERSION} EXACT)
   if (NOT PythonLibs_FOUND)
