@@ -6,7 +6,24 @@ GTEST_DIR = /usr/local/bin/googletest
 
 OBJS = normalize.o dict.o args.o proj.o parser.o data.o model.o starspace.o doc_parser.o doc_data.o utils.o
 TESTS = matrix_test proj_test
-INCLUDES = -I$(BOOST_DIR)/include
+
+CONAN_MAK_FILE=./python/build/conanbuildinfo.mak
+
+ifneq ("$(wildcard $(CONAN_MAK_FILE))","")
+    include $(CONAN_MAK_FILE)
+
+	#$(info Using Boost and GoogleTest libs from canon installed dependencies $(CONAN_MAK_FILE) )
+
+	INCLUDES= -I$(CONAN_INCLUDE_DIRS_BOOST)
+	TEST_INCLUDES = -I$(CONAN_INCLUDE_DIRS_GTEST)
+else
+	#$(info Using Boost and GoogleTest libs from $(BOOST_DIR) and $(GTEST_DIR))
+
+    INCLUDES = -I$(BOOST_DIR)/include
+	TEST_INCLUDES = -I$(GTEST_DIR)/include
+endif
+
+
 
 opt: CXXFLAGS += -O3 -fPIC -funroll-loops
 opt: libstarspace.a
@@ -14,8 +31,6 @@ opt: libstarspace.a
 debug: CXXFLAGS += -g -O0 -fPIC -fno-inline
 debug: libstarspace.a
 
-
-TEST_INCLUDES = -I$(GTEST_DIR)/include
 
 GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
                 $(GTEST_DIR)/include/gtest/internal/*.h

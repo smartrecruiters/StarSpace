@@ -1,5 +1,8 @@
 [requires]
 pybind11/2.9.1
+boost/1.79.0
+gtest/cci.20210126
 
 [generators]
 cmake
+make

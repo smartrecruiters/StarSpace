@@ -25,7 +25,7 @@ predictOne
 ## How to build?
 - make sure you have CMake installed. Otherwise install it from [here](https://cmake.org/install/)
 - install Conan C++ package manager from [here](https://conan.io/downloads.html).
-- install Boost and GoogleTest libs and and check `starspace.cfg` files
+- (optional) install Boost and GoogleTest libs. Please check `USE_CONAN_FOR_BOOST` property in `starspace.cfg` file
 - run the build script.
 
 ```
