@@ -1,0 +1,7 @@
+[requires]
+pybind11/2.9.1
+# boost and gtest libs must be installed manually by OS package manager
+
+[generators]
+cmake
+# make - makegenerator must bedisabled for manually installed boost
