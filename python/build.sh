@@ -101,5 +101,5 @@ fi
 
 pip install -r requirements.txt
 python -m pytest -vv
-
+deactivate
 cd -
